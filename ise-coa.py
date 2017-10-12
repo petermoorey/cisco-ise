@@ -23,15 +23,16 @@ ise.disable_warnings = False
 ise.timeout = 5
 isePort = '443'
 
-# try each PSN until we get a success. Usually first PSN will work fine, but let's try each one until it is successful.
-for psn in psns:
-        
-        # the api call to trigger reauthentication
-        url = 'https://{0}:{1}/admin/API/mnt/CoA/Reauth/{2}/{3}/1'.format(iseServer,isePort,psn,mac)
-        
-        # issue the api call
-        result = ise.get(url, auth=HTTPBasicAuth(username, password), verify=False)
+if __name__ == '__main__':
+        # try each PSN until we get a success. Usually first PSN will work fine, but let's try each one until it is successful.
+        for psn in psns:
 
-        # stop if ISE successfully issues the CoA
-        if 'true' in result.text:
-                break
+                # the api call to trigger reauthentication
+                url = 'https://{0}:{1}/admin/API/mnt/CoA/Reauth/{2}/{3}/1'.format(iseServer,isePort,psn,mac)
+
+                # issue the api call
+                result = ise.get(url, auth=HTTPBasicAuth(username, password), verify=False)
+
+                # stop if ISE successfully issues the CoA
+                if 'true' in result.text:
+                        break
