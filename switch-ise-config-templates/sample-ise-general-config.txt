@@ -1,0 +1,46 @@
+# a partial/sample global config required to enable ISE
+!
+aaa authentication dot1x default group Cisco-ISE-dot1x
+aaa authorization network default group Cisco-ISE-dot1x 
+aaa authorization auth-proxy default group Cisco-ISE-dot1x 
+aaa accounting delay-start all
+aaa accounting dot1x default start-stop group Cisco-ISE-dot1x
+aaa accounting auth-proxy default start-stop group Cisco-ISE-dot1x
+aaa accounting network default start-stop group Cisco-ISE-dot1x
+!
+aaa server radius dynamic-author
+!
+ client 1.2.3.4 server-key 0 mysecretkey1
+ client 4.3.2.1 server-key 0 mysecretkey2
+ auth-type any
+!
+dot1x system-auth-control
+!
+ip device tracking
+ip device tracking probe delay 10
+!
+logging buffered 16000
+!
+lldp run
+!
+authentication mac-move permit
+!
+!
+snmp-server host 1.2.3.4 myCommunity 
+snmp-server host 4.3.2.1 myCommunity 
+!
+!
+ip http server
+ip http secure-server
+ip http secure-active-session-modules none
+ip http active-session-modules none
+no ip http authentication aaa
+!
+!
+aaa group server radius Cisco-ISE-dot1x
+ server name radius1.company.com
+ server name radius2.company.com
+ !
+ etc
+ !
+ etc
