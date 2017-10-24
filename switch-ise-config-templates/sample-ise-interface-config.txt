@@ -1,0 +1,16 @@
+# sample interface-level commands to enable ISE
+mab
+dot1x pae authenticator
+dot1x timeout tx-period 10
+spanning-tree portfast
+spanning-tree bpduguard enable
+authentication open
+authentication event fail action next-method
+authentication event server dead action authorize voice
+authentication event server alive action reinitialize
+authentication host-mode multi-auth
+authentication order dot1x mab
+authentication priority dot1x mab
+authentication port-control auto
+authentication timer inactivity 180
+authentication violation restrict
