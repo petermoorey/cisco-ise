@@ -22,8 +22,8 @@ if __name__ == '__main__':
 	configFile = getConfig()
 
 	# load templates from files 
-	iseGeneralConfig = './sample-ise-general-config.txt'
-	iseInterfaceConfig = './sample-ise-interface-config.txt'
+	iseGeneralConfig = './switch-ise-config-templates/sample-ise-general-config.txt'
+	iseInterfaceConfig = './switch-ise-config-templates/sample-ise-interface-config.txt'
 	with open(iseGeneralConfig, 'r') as iseGeneralConfig:
 		iseGeneralConfig = iseGeneralConfig.read()
 	with open(iseInterfaceConfig, 'r') as iseInterfaceConfig:
